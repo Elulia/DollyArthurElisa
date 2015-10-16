@@ -7,14 +7,13 @@ package fr.iutvalence.java.s2.projet;
  */
 public class VigenereCipher {
 	
+	//TODO add 0A et 0D
+	
 	final static int ARRAY_SIZE=152;
 	private final char[][] table = new char[ARRAY_SIZE+2][ARRAY_SIZE+2];
 	private final char[] allChar = new char[ARRAY_SIZE+2];
 	private int filling=0;
-	
-	/**
-	 * Vigenere cipher's constructor
-	 */
+
 	public VigenereCipher()
 	{
 		
@@ -41,24 +40,17 @@ public class VigenereCipher {
 		}
 	}
 
-	/**
-	 * A method to get all the character.
-	 * @return all the character
-	 */
 	public char[] getAllChar() {
 		return this.allChar;
 	}
 
-	/**
-	 * A method to get the table.
-	 * @return the table
-	 */
 	public char[][] getTable() {
 		return this.table;
 	}
 
 	@Override
 	public String toString() {
+		
 		String toReturn="";
 		for (int i=0;i<=ARRAY_SIZE;i++)
 			toReturn+=this.allChar[i];
@@ -72,8 +64,6 @@ public class VigenereCipher {
 			}
 			toReturn+="\n";
 		}
-		
-		
 		return toReturn;
 	}
 

@@ -9,89 +9,54 @@ import java.util.ArrayList;
  */
 public class Folder {
 	
-	/**
-	 * Folder's name.
-	 */
-	private String name;
-	/**
-	 * Number of file contained in the folder.
-	 */
-	private int numberOfFile;
-	/**
-	 * Array containing all the files.
-	 */
-	private ArrayList<TextFile> file;
+
+	private String foldersName;
+
+	private int numberOfFileInTheFolder;
+
+	private ArrayList<TextFile> listeOfFile;
 	
-	/**
-	 * Create a folder .
-	 * @param name : name of the created folder
-	 */
-	public Folder(String name){
-		this.name = name;
-		this.numberOfFile = 0;
-		this.file = new ArrayList<TextFile>();
+	public Folder(String foldersName){
+		this.foldersName = foldersName;
+		this.numberOfFileInTheFolder = 0;
+		this.listeOfFile = new ArrayList<TextFile>();
 	}
 	
-	/**
-	 * Add a file to the folder.
-	 * @param fileToAdd : file to add to the folder
-	 */
-	public void addFile(TextFile fileToAdd){
-		this.file.add(fileToAdd);
-		this.numberOfFile++;
+	public void addFileToTheFolder(TextFile fileToAdd){
+		this.listeOfFile.add(fileToAdd);
+		this.numberOfFileInTheFolder++;
 	}
-	
-	/**
-	 * Delete a file from a folder.
-	 * @param fileToDelete : file to be deleted
-	 */
-	public void deleteFile(TextFile fileToDelete){
+
+	public void deleteFileFromTheFolder(TextFile fileToDelete){
 		int fileNumber = 0;
 		
-		while(!(fileToDelete.equals(this.file.get(fileNumber)))){
+		while(!(fileToDelete.equals(this.listeOfFile.get(fileNumber)))){
 			fileNumber++;
 		}
 		
-		this.file.get(fileNumber).delete();
-		this.file.remove(fileNumber);
-		this.numberOfFile--;
+		this.listeOfFile.get(fileNumber).delete();
+		this.listeOfFile.remove(fileNumber);
+		this.numberOfFileInTheFolder--;
 	}
 	
-	/**
-	 * Rename a folder.
-	 * @param name : new folder's name
-	 */
-	public void rename(String name){
-		this.name = name;
+	public void renameFolder(String newName){
+		this.foldersName = newName;
 	}
 	
-	/**
-	* Return the number of file in the folder.
-	* @return numberOfFile  the number of file in the folder
-	*/
 	public int getNumberOfFile(){
-		return this.numberOfFile;
+		return this.numberOfFileInTheFolder;
 	}
 	
-	/**
-	* return the file on the number fileNumber.
-	* @return file[fileNumber] the file to return
-	*/
 	public ArrayList<TextFile> getFile(){
-		return this.file;
+		return this.listeOfFile;
 	}
 	
-	/**
-	 * A method to get a file.
-	 * @param fileName
-	 * @return a file
-	 */
 	public TextFile getFile(String fileName){
 		TextFile fileFound = null;
 		
-		for(int numberOfFile = 0; numberOfFile < this.numberOfFile;numberOfFile++){
-			if(this.file.get(numberOfFile).toString().equals(fileName)){
-				fileFound = this.file.get(numberOfFile);
+		for(int numberOfFile = 0; numberOfFile < this.numberOfFileInTheFolder;numberOfFile++){
+			if(this.listeOfFile.get(numberOfFile).toString().equals(fileName)){
+				fileFound = this.listeOfFile.get(numberOfFile);
 			}
 		}
 		
@@ -105,7 +70,7 @@ public class Folder {
 	*/
 	public String getName()
 	{
-		return this.name;
+		return this.foldersName;
 	}
 	
 	

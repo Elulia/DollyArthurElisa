@@ -7,55 +7,40 @@ package fr.iutvalence.java.s2.projet;
  */
 public class Generator
 {
-	/**
-	 * List of option to create password.
-	 */
-	private Attribut attribut;
+
+	private Attribut passwordOptions;
 	
-	/**
-	 * Constructor without param.
-	 */
+
 	public Generator(){
-		this.attribut = new Attribut();	
+		this.passwordOptions = new Attribut();	
 	}
-	/**
-	 * Constructor with param.
-	 * @param attribut
-	 */
+
 	public Generator(Attribut attribut){
-		this.attribut=attribut;
+		this.passwordOptions=attribut;
 	}
 	
-	/**
-	 * Method to generate password.
-	 * @return the password generated
-	 */
-	public String generer(){
+
+	public String generatePassword(){
 		
 		String passwordGenerate = "";
 		
-		for(int numberOfCharacter = 0; numberOfCharacter < this.attribut.getLength();numberOfCharacter++){
+		for(int numberOfCharacter = 0; numberOfCharacter < this.passwordOptions.getLength();numberOfCharacter++){
 			int random = (int) (Math.random()*400);
 		
-			if(random < 100 && this.attribut.getUseSpecialChar()){
+			if(random < 100 && this.passwordOptions.getUseSpecialChar()){
 				passwordGenerate += generateSpecialCharacter();
-			} else if(random >= 100 && random < 200 && this.attribut.getUseUppercase()){
+			} else if(random >= 100 && random < 200 && this.passwordOptions.getUseUppercase()){
 				passwordGenerate += generateUppercase();
-			} else if(random >= 200 && random < 300 && this.attribut.getUseNumber()){
+			} else if(random >= 200 && random < 300 && this.passwordOptions.getUseNumber()){
 				passwordGenerate += generateInt();
 			}else{
 				passwordGenerate += generateChar();
 			}
-			
 		}
-		
 		return passwordGenerate;
 	}
 	
-	/**
-	 * Method to generate an Int.
-	 * @return a int 
-	 */
+
 	private static int generateInt(){
 		int generateInt;
 		
@@ -64,22 +49,14 @@ public class Generator
 		return generateInt;
 	}
 	
-	/**
-	 * Method to generate a char.
-	 * @return a char
-	 */
+
 	private static char generateChar(){
 		char generateChar;
-		
 		generateChar = (char)((int) (Math.random()*25)+97);
-		
 		return generateChar;
 	}
 	
-	/**
-	 * Method to generate an Uppercase letter.
-	 * @return a char in Uppercase
-	 */
+
 	private static char generateUppercase(){
 		char generateUppercase;
 		
@@ -88,10 +65,6 @@ public class Generator
 		return generateUppercase;
 	}
 	
-	/**
-	 * Method to generate special character.
-	 * @return the special character
-	 */
 	private static char generateSpecialCharacter(){
 		char generateSpec;
 		

@@ -34,7 +34,7 @@ public class Application{
 	 * @param newFolder
 	 */
 	public void rename(String folder, String newFolder){
-		this.treeView.getFolder(folder).rename(newFolder);
+		this.treeView.getFolder(folder).renameFolder(newFolder);
 		this.saveTreeView();
 	}
 	
@@ -72,7 +72,7 @@ public class Application{
 	 */
 	public String generatePassword(Attribut attribut){
 		this.gen = new Generator(attribut);
-		return this.gen.generer();
+		return this.gen.generatePassword();
 	}
 	
 	/**
@@ -147,7 +147,7 @@ public class Application{
 	 * @param file
 	 */
 	public void deleteAFile(String folder, String file){
-		this.treeView.getFolder(folder).deleteFile(this.treeView.getFolder(folder).getFile(file));
+		this.treeView.getFolder(folder).deleteFileFromTheFolder(this.treeView.getFolder(folder).getFile(file));
 	}
 	
 	/**

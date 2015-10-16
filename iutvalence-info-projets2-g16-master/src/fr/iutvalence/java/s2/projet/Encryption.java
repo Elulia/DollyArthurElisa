@@ -14,7 +14,7 @@ public class Encryption {
 	{
 		this.cipher= new VigenereCipher();
 	}
-	
+	//TODO faire une map et une liste
 	/**
 	 * Encrypt a stuff with the passphrase.
 	 * @param stuffToEncrypt
