@@ -9,9 +9,7 @@ public class Encryption {
 	
 	private final VigenereCipher cipher;
 	
-	/**
-	 * Encryption's constructor.
-	 */
+
 	public Encryption()
 	{
 		this.cipher= new VigenereCipher();
@@ -23,7 +21,7 @@ public class Encryption {
 	 * @param passphrase
 	 * @return an encrypted stuff
 	 */
-	public String encrypt(String stuffToEncrypt, String passphrase)
+	public String encryptTextWithThePassphrase(String stuffToEncrypt, String passphrase)
 	{
 		int passphraseIndex=0;
 		char stuffToEncryptChar;
@@ -105,7 +103,7 @@ public class Encryption {
 	{
 		System.out.println(stuffToEncrypt);
 		System.out.println();
-		String bla = encrypt(stuffToEncrypt, passphrase);
+		String bla = encryptTextWithThePassphrase(stuffToEncrypt, passphrase);
 		System.out.println(bla);
 		System.out.println();
 		System.out.println(decrypt(bla, passphrase));

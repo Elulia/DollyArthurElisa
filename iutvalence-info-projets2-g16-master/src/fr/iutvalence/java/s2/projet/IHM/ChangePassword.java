@@ -84,7 +84,7 @@ public class ChangePassword extends JFrame implements ActionListener {
 		if(source == this.validate){
 			String Ppassword=(String.copyValueOf(this.passwordNew.getPassword()));
 			this.currentApplication.resetPassword();
-			this.currentApplication.savePassword(this.encrypt.encrypt(Ppassword, Ppassword));
+			this.currentApplication.savePassword(this.encrypt.encryptTextWithThePassphrase(Ppassword, Ppassword));
 			this.dispose();
 			
 		}

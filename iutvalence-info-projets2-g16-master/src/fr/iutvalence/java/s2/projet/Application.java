@@ -1,5 +1,4 @@
 package fr.iutvalence.java.s2.projet;
-
 import java.util.ArrayList;
 
 /**
@@ -15,9 +14,7 @@ public class Application{
 	
 	private String passphrase="h";
 
-	/**
-	 * Application's constructor .
-	 */
+
 	public Application() {
 	    this.treeView = new TreeView();
 	    this.passwordSave = new TextFile("password",new Folder("void"));

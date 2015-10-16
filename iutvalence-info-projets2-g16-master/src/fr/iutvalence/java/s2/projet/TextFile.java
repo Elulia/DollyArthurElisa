@@ -79,7 +79,7 @@ public class TextFile {
 		FileWriter textContentToChange = null;
 		try {
 			textContentToChange = new FileWriter(this.javaBasicFile,true);
-			textContentToChange.write(this.encryptingKit.encrypt(newText, passphrase));
+			textContentToChange.write(this.encryptingKit.encryptTextWithThePassphrase(newText, passphrase));
 			textContentToChange.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -93,7 +93,7 @@ public class TextFile {
 		FileWriter textContent = null;
 		try {
 			textContent = new FileWriter(this.javaBasicFile,false);
-			textContent.write(this.encryptingKit.encrypt(textToWrite, passphrase));
+			textContent.write(this.encryptingKit.encryptTextWithThePassphrase(textToWrite, passphrase));
 			textContent.close();
 		} catch (IOException e) {
 			e.printStackTrace();

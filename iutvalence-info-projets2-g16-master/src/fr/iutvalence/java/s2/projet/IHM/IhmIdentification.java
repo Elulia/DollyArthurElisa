@@ -104,10 +104,10 @@ public class IhmIdentification extends JPanel implements ActionListener{
 			//System.out.println(this.currentApplication.getPasswordFile().read("h").substring(47));
 			
 			if(this.currentApplication.passwordIsVoid()){
-				this.currentApplication.savePassword(this.encrypt.encrypt(Ppassword, Ppassword));
+				this.currentApplication.savePassword(this.encrypt.encryptTextWithThePassphrase(Ppassword, Ppassword));
 				this.currentWindow.changeIhm();
 			}else{
-				if(this.currentApplication.identification(this.encrypt.encrypt(Ppassword, Ppassword))){
+				if(this.currentApplication.identification(this.encrypt.encryptTextWithThePassphrase(Ppassword, Ppassword))){
 					this.currentWindow.changeIhm();
 				}else
 					this.title.setText("Wrong password... Enter the right one:");
