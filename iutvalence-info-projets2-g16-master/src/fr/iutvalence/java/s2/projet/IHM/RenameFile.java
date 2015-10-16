@@ -135,7 +135,7 @@ public class RenameFile extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		
 		if(source == this.validate){
-			this.currentApplication.getTreeView().getFolder(this.folder.getText()).getFile(this.file.getText()).rename(this.newFile.getText());
+			this.currentApplication.getTreeView().getFolder(this.folder.getText()).getFile(this.file.getText()).renameFile(this.newFile.getText());
 			this.currentWindow.getMainIhm().buildJTree();
 			this.dispose();
 		}

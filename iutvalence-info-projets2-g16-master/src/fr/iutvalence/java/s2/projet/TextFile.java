@@ -11,53 +11,36 @@ import java.io.IOException;
  * @author MaximeBlo
  *
  */
-public class AFile {
+public class TextFile {
 
-	/**
-	 * File's name.
-	 */
 	private String name;
-	/**
-	 * Number of character contained in the file.
-	 */
-	private int numberOfChar;
+
+	private int numberOfCharsInThisFile;
 	
-	/**
-	 * The file were store the text.
-	 */
-	private File file;
+	private File javaBasicFile;
 	
-	private Encryption encryption = new Encryption();
+	private final Encryption encryptingKit = new Encryption();
 	
-	/**
-	 * Create a file.
-	 * @param name : file's name
-	 * @param parentFolder 
-	 */
-	public AFile(String name, Folder parentFolder){
+
+	public TextFile(String name, Folder parentFolder){
 		this.name = name;
-		this.file = new File(name);
+		this.javaBasicFile = new File(name);
 		try {
-			this.file.createNewFile();
+			this.javaBasicFile.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/**
-	 * Rename a file. 
-	 * @param name : new file's name
-	 */
-	public void rename(String name){
-		this.name = name;
-		this.file.renameTo(new File(name));
-		//this.parentFolder.addFile(this);
+
+	public void renameFile(String newName){
+		this.name = newName;
+		this.javaBasicFile.renameTo(new File(newName));
 	}
 
 
 	/**
-	 * Return the name of the file.
-	 * @return name The name of the file
+	 * Get the name of the file
 	 */
 	@Override
 	public String toString()
@@ -65,88 +48,66 @@ public class AFile {
 		return this.name;
 	}
 	
-	/**
-	 * Get the number of character in the file.
-	 * @return the number of character 
-	 */
 	
-	public int getNumberOfChar(){
-		return this.numberOfChar;
+	public int getNumberOfCharsInThisFile(){
+		return this.numberOfCharsInThisFile;
 	}
 	
 	
-	/**
-	 * Read the file.
-	 * @param passphrase 
-	 * @return String of the file
-	 */
-	public String read(String passphrase){
-		String text ="";
-		FileReader fileRead = null;
+
+	public String readEncryptedFile(String passphrase){
+		String encryptedTextToDecryptAndReturn ="";
+		FileReader filesTextContent = null;
 		try {
-			fileRead = new FileReader(this.file);
-			while(fileRead.ready()){
-				text += (char)fileRead.read();
+			filesTextContent = new FileReader(this.javaBasicFile);
+			while(filesTextContent.ready()){
+				encryptedTextToDecryptAndReturn += (char)filesTextContent.read();
 			}
-			fileRead.close();
+			filesTextContent.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return this.encryption.decrypt(text, passphrase);	
+		return this.encryptingKit.decrypt(encryptedTextToDecryptAndReturn, passphrase);	
 	}
 	
 	
-	/**
-	 * To rewrite in a file.
-	 * @param text the text to write
-	 * @param passphrase 
-	 */
-	public void reWrite(String text, String passphrase){
+	public void encryptAndReWriteInTheFile(String newText, String passphrase){
 		
-		FileWriter fileWrite = null;
+		FileWriter textContentToChange = null;
 		try {
-			fileWrite = new FileWriter(this.file,true);
-			fileWrite.write(this.encryption.encrypt(text, passphrase));
-			fileWrite.close();
+			textContentToChange = new FileWriter(this.javaBasicFile,true);
+			textContentToChange.write(this.encryptingKit.encrypt(newText, passphrase));
+			textContentToChange.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	/**
-	 * To write in a file.
-	 * @param text the text to write
-	 * @param passphrase 
-	 */
-	public void write(String text, String passphrase){
+
+	public void encryptAndWriteInTheFile(String textToWrite, String passphrase){
 		
-		FileWriter fileWrite = null;
+		FileWriter textContent = null;
 		try {
-			fileWrite = new FileWriter(this.file,false);
-			fileWrite.write(this.encryption.encrypt(text, passphrase));
-			fileWrite.close();
+			textContent = new FileWriter(this.javaBasicFile,false);
+			textContent.write(this.encryptingKit.encrypt(textToWrite, passphrase));
+			textContent.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	/**
-	 * To Delete a file.
-	 */
+
 	public void delete(){
-		this.file.delete();
+		this.javaBasicFile.delete();
 	}
 	
-	/**
-	 * To get a file.
-	 * @return the file
-	 */
+
 	public File getFile(){
-		return this.file;
+		return this.javaBasicFile;
 	}
 }

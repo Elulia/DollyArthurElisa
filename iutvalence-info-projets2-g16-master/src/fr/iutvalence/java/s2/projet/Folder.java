@@ -20,7 +20,7 @@ public class Folder {
 	/**
 	 * Array containing all the files.
 	 */
-	private ArrayList<AFile> file;
+	private ArrayList<TextFile> file;
 	
 	/**
 	 * Create a folder .
@@ -29,14 +29,14 @@ public class Folder {
 	public Folder(String name){
 		this.name = name;
 		this.numberOfFile = 0;
-		this.file = new ArrayList<AFile>();
+		this.file = new ArrayList<TextFile>();
 	}
 	
 	/**
 	 * Add a file to the folder.
 	 * @param fileToAdd : file to add to the folder
 	 */
-	public void addFile(AFile fileToAdd){
+	public void addFile(TextFile fileToAdd){
 		this.file.add(fileToAdd);
 		this.numberOfFile++;
 	}
@@ -45,7 +45,7 @@ public class Folder {
 	 * Delete a file from a folder.
 	 * @param fileToDelete : file to be deleted
 	 */
-	public void deleteFile(AFile fileToDelete){
+	public void deleteFile(TextFile fileToDelete){
 		int fileNumber = 0;
 		
 		while(!(fileToDelete.equals(this.file.get(fileNumber)))){
@@ -77,7 +77,7 @@ public class Folder {
 	* return the file on the number fileNumber.
 	* @return file[fileNumber] the file to return
 	*/
-	public ArrayList<AFile> getFile(){
+	public ArrayList<TextFile> getFile(){
 		return this.file;
 	}
 	
@@ -86,8 +86,8 @@ public class Folder {
 	 * @param fileName
 	 * @return a file
 	 */
-	public AFile getFile(String fileName){
-		AFile fileFound = null;
+	public TextFile getFile(String fileName){
+		TextFile fileFound = null;
 		
 		for(int numberOfFile = 0; numberOfFile < this.numberOfFile;numberOfFile++){
 			if(this.file.get(numberOfFile).toString().equals(fileName)){

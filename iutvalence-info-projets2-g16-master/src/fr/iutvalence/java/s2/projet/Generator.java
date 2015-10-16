@@ -37,11 +37,11 @@ public class Generator
 		for(int numberOfCharacter = 0; numberOfCharacter < this.attribut.getLength();numberOfCharacter++){
 			int random = (int) (Math.random()*400);
 		
-			if(random < 100 && this.attribut.getSpecialChar()){
+			if(random < 100 && this.attribut.getUseSpecialChar()){
 				passwordGenerate += generateSpecialCharacter();
-			} else if(random >= 100 && random < 200 && this.attribut.getUppercase()){
+			} else if(random >= 100 && random < 200 && this.attribut.getUseUppercase()){
 				passwordGenerate += generateUppercase();
-			} else if(random >= 200 && random < 300 && this.attribut.getNumber()){
+			} else if(random >= 200 && random < 300 && this.attribut.getUseNumber()){
 				passwordGenerate += generateInt();
 			}else{
 				passwordGenerate += generateChar();

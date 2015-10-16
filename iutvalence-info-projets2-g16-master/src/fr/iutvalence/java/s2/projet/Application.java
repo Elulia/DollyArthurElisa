@@ -11,7 +11,7 @@ public class Application{
 	private TreeView treeView;
 	private Generator gen;
 	
-	private AFile passwordSave;
+	private TextFile passwordSave;
 	
 	private String passphrase="h";
 
@@ -20,7 +20,7 @@ public class Application{
 	 */
 	public Application() {
 	    this.treeView = new TreeView();
-	    this.passwordSave = new AFile("password",new Folder("void"));
+	    this.passwordSave = new TextFile("password",new Folder("void"));
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class Application{
 	 * @return false is a password is saved
 	 */
 	public boolean passwordIsVoid(){
-		if(this.passwordSave.read(this.passphrase) == ""){
+		if(this.passwordSave.readEncryptedFile(this.passphrase) == ""){
 			return true;
 		}else
 			return false;
@@ -103,7 +103,7 @@ public class Application{
 	 * @return true if the password match
 	 */
 	public boolean identification(String password){
-		if(password.equals(this.passwordSave.read(this.passphrase).substring(47))){
+		if(password.equals(this.passwordSave.readEncryptedFile(this.passphrase).substring(47))){
 			return true;
 		}else
 			return false;
@@ -114,7 +114,7 @@ public class Application{
 	 * @param password
 	 */
 	public void savePassword(String password){
-		this.passwordSave.write(this.generatePassword(new Attribut(47, true, true, true)) + password, this.passphrase);
+		this.passwordSave.encryptAndWriteInTheFile(this.generatePassword(new Attribut(47, true, true, true)) + password, this.passphrase);
 	}
 	
 	/**
@@ -124,7 +124,7 @@ public class Application{
 	 * @param text
 	 */
 	public void writeInFile(String folder, String file, String text){
-		this.treeView.getFolder(folder).getFile(file).write(text,this.passphrase);
+		this.treeView.getFolder(folder).getFile(file).encryptAndWriteInTheFile(text,this.passphrase);
 	}
 	
 	/**
@@ -134,7 +134,7 @@ public class Application{
 	 * @return the file to read
 	 */
 	public String readFile(String folder, String file){
-		return this.treeView.getFolder(folder).getFile(file).read(this.passphrase);
+		return this.treeView.getFolder(folder).getFile(file).readEncryptedFile(this.passphrase);
 	}
 	
 	/**
@@ -181,7 +181,7 @@ public class Application{
 	 * Give the saved password for a file.
 	 * @return a password
 	 */
-	public AFile getPasswordFile(){
+	public TextFile getPasswordFile(){
 		return this.passwordSave;
 	}
 	

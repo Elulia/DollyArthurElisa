@@ -72,7 +72,7 @@ public class TreeView {
 	public boolean createFile(String folder, String file){
 		for(int numberOfFolder = 0; numberOfFolder < this.numberOfFolders; numberOfFolder++){
 			if(this.folderCreated.get(numberOfFolder).getName().equals(folder)){
-				this.folderCreated.get(numberOfFolder).addFile(new AFile(file,this.getFolder(folder)));
+				this.folderCreated.get(numberOfFolder).addFile(new TextFile(file,this.getFolder(folder)));
 				return true;
 			}
 		}
@@ -199,7 +199,7 @@ public class TreeView {
 				int numberOfFile = 0;
 				
 				while(numberOfFileInFolder > 0){
-					this.getFolder(folderName).addFile(new AFile(partsOfSave[numberOfFile+1+fileIndex],this.getFolder(folderName)));
+					this.getFolder(folderName).addFile(new TextFile(partsOfSave[numberOfFile+1+fileIndex],this.getFolder(folderName)));
 					numberOfFileInFolder--;
 					numberOfFile++;
 				}
